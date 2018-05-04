@@ -1,2 +1,2 @@
-alter table pizzas owner to %dbuser%;
-alter table customers owner to %dbuser%;
+alter table pizzas owner to testdbuser;
+alter table customers owner to testdbuser;

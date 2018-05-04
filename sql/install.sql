@@ -1,7 +1,7 @@
 \i sql/uninstall.sql
 
 \i sql/pre-install.sql
-\connect %dbname%
+\connect pizzajerry
 
 \i sql/structure.sql
 \i sql/data.sql

@@ -1,2 +1,2 @@
-CREATE ROLE %dbuser% WITH PASSWORD '%dbpasswd%' LOGIN;
-CREATE DATABASE %dbname% OWNER %dbuser%;
+CREATE ROLE testdbuser WITH PASSWORD 'password' LOGIN;
+CREATE DATABASE pizzajerry OWNER testdbuser;

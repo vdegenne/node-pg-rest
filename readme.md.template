@@ -1,13 +1,13 @@
-# %appname%
+# testapp
 
 
 
 ## Installation
 
 ```bash
-git clone .../%appname%.git
+git clone .../testapp.git
 # or git pull
-cd %appname%
+cd testapp
 yarn install # && yarn install:database
-yarn test && pm2 start node/%appname% [-- -p 8000]
+yarn test && pm2 start node/testapp [-- -p 8000]
 ```
