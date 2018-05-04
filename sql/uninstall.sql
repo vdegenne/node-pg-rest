@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS pizzajerry;
-DROP ROLE IF EXISTS testdbuser;
+DROP DATABASE IF EXISTS %dbname%;
+DROP ROLE IF EXISTS %dbuser%;

@@ -8,6 +8,6 @@ services:
 addons:
   postgresql: "9.6"
 before_script:
-  - yarn install:database
+  - npm run install:database
 after_script:
-  - yarn uninstall:database
+  - npm run uninstall:database

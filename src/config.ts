@@ -1,6 +1,18 @@
+import * as commandLineArgs from 'command-line-args';
+import commandArgs from './args';
 
+/**
+ * Command Line arguments
+ */
+const args = commandLineArgs(commandArgs);
+const PORT = args.port;
+const ENABLE_SESSION = !args['disable-session'];
+
+/**
+ * Constants
+ */
 // NODE_ENV
-let NODE_ENV: string = 'dev';
+let NODE_ENV: string = 'prod';
 if (process.env.NODE_ENV &&
     ['test', 'dev', 'prod'].includes(process.env.NODE_ENV)) {
   NODE_ENV = process.env.NODE_ENV;
@@ -33,4 +45,5 @@ if (process.env.REDIS_HOST) {
 }
 
 
-export {NODE_ENV, PG_HOST, REDIS_HOST}
+
+export {NODE_ENV, PG_HOST, REDIS_HOST, PORT, ENABLE_SESSION}

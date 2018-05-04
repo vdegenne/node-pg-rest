@@ -1,7 +1,6 @@
 import * as express from 'express';
 
-import {NODE_ENV} from '../config';
-import session from '../session';
+import {ENABLE_SESSION, NODE_ENV} from '../config';
 
 import {customerRouter} from './customer.router';
 
@@ -11,11 +10,17 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 (async () => {
-  // session ? before anything else
-  if (true) {
+  // session middleware before all
+  if (ENABLE_SESSION) {
     try {
+      const {session} = require('../session');
       app.use(await session);
-
+      app.use((req, res, next) => {
+        if (!req.session.user) {
+          req.session.user = { name: 'guest', roles: ['GUEST'] }
+        }
+        next();
+      })
     } catch (e) {
       console.error(e.message);
       process.exit(1);
@@ -27,9 +32,7 @@ app.use(express.urlencoded({extended: true}));
   // ping
   app.get('/ping', async (req, res) => res.end('pong\n'));
 
-  /**
-   * routers
-   */
+  // routers
   app.use('/customers', customerRouter);
 })();
 

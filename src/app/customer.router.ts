@@ -1,9 +1,11 @@
 import {Router} from 'express';
+
 import Customer from '../models/Customer';
+
+import {checkAuthorization} from './security';
 import {filterParams} from './util';
 
 const router: Router = Router();
-
 
 
 router.get('/:customerId', async (req, res) => {
@@ -27,6 +29,15 @@ router.get('/:customerId', async (req, res) => {
       res.status(400).json(
           {success: false, message: 'customerId needs to be an integer'});
       return;
+  }
+});
+
+
+router.post('/', async (req, res) => {
+  if (checkAuthorization(req, res, 'ADMIN')) {
+    res.send('hello world');
+  } else {
+    res.status(401).end();
   }
 });
 

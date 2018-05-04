@@ -1,0 +1,13 @@
+# %appname%
+
+
+
+## Installation
+
+```bash
+git clone .../%appname%.git
+# or git pull
+cd %appname%
+npm install # && npm install:database
+npm test && pm2 start build/%appname% [-- -p 8000 --disable-session]
+```

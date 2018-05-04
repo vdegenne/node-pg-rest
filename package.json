@@ -1,16 +1,16 @@
 {
-  "name": "testapp",
+  "name": "%appname%",
   "version": "0.1.0",
   "description": "description",
   "author": "author",
   "license": "BSD-3-Clause",
   "scripts": {
-    "start": "node build/testapp",
+    "start": "node build/%appname%",
     "install:database": "psql -h localhost -U postgres -a -f sql/install.sql",
     "uninstall:database": "psql -h localhost -U postgres -a -f sql/uninstall.sql",
     "clean": "rimraf build",
-    "build": "yarn clean && tsc",
-    "test": "NODE_ENV=test yarn build && mocha",
+    "build": "npm run clean && tsc",
+    "test": "NODE_ENV=test npm run build && mocha",
     "test:watch": "NODE_ENV=test tsc-then -- mocha",
     "format": "find src test -iname '*.ts' | xargs clang-format --style=file -i"
   },
